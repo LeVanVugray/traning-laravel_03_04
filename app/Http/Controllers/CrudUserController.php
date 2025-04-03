@@ -21,6 +21,46 @@ class CrudUserController extends Controller
     {
         return view('crud_user.login');
     }
+    public function index(){
+        return view('DoAN_nhomF.index');
+    }
+    public function shop(){
+        return view('DoAN_nhomF.shop');
+    }
+    public function detail(){
+        return view('DoAN_nhomF.detail');
+    }
+    public function cart(){
+        return view('DoAN_nhomF.cart');
+    }
+    public function checkout(){
+        return view('DoAN_nhomF.checkout');
+    }
+    public function contact(){
+        return view('DoAN_nhomF.contact');
+    }
+    //
+
+
+    //
+    public function indexexe(){
+        return view('EXE1.index');
+    }
+    public function loginexe(){
+        return view('EXE1.login');
+    }
+    public function listexe(){
+        return view('EXE1.list');
+    }
+    public function registerexe(){
+        return view('EXE1.register');
+    }
+    public function updateexe(){
+        return view('EXE1.update');
+    }
+    public function viewexe(){
+        return view('EXE1.view');
+    }
 
     /**
      * User submit form login
@@ -59,12 +99,16 @@ class CrudUserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'phone' => 'required|String|max:15',
+            'address' => 'required|String|max:255',
         ]);
 
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
+            'address' =>$data['address'],
             'password' => Hash::make($data['password'])
         ]);
 
@@ -111,12 +155,17 @@ class CrudUserController extends Controller
 
         $request->validate([
             'name' => 'required',
+            'phone' => $data['phone'],
+            'address' => $data['address'],
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
+
         ]);
 
        $user = User::find($input['id']);
        $user->name = $input['name'];
+       $user->phone = $input['phone'];
+       $user->address = $input['address'];
        $user->email = $input['email'];
        $user->password = $input['password'];
        $user->save();

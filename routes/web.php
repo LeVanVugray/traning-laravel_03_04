@@ -33,6 +33,33 @@ Route::get('list', [CrudUserController::class, 'listUser'])->name('user.list');
 
 Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
 
+Route::get('index', [CrudUserController::class, 'index'])->name('index');
+
+Route::get('shop', [CrudUserController::class, 'shop'])->name('shop');
+
+Route::get('detail', [CrudUserController::class, 'detail'])->name('detail');
+
+Route::get('cart', [CrudUserController::class, 'cart'])->name('cart');
+
+Route::get('checkout', [CrudUserController::class, 'checkout'])->name('checkout');
+
+Route::get('contact', [CrudUserController::class, 'contact'])->name('contact');
+//
+Route::get('indexexe', [CrudUserController::class, 'indexexe'])->name('indexexe');
+
+Route::get('loginexe', [CrudUserController::class, 'loginexe'])->name('loginexe');
+
+Route::get('listexe', [CrudUserController::class, 'listexe'])->name('listexe');
+
+Route::get('registerexe', [CrudUserController::class, 'registerexe'])->name('registerexe');
+
+Route::get('updateexe', [CrudUserController::class, 'updateexe'])->name('updateexe');
+
+Route::get('viewexe', [CrudUserController::class, 'viewexe'])->name('viewexe');
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
